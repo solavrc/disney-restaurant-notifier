@@ -15,8 +15,8 @@ export class DisneyRestaurantNotifierStack extends Stack {
     const cluster = new ecs.Cluster(this, 'Cluster', { vpc, })
     const taskDefinition = new ecs.TaskDefinition(this, 'TaskDefinition', {
       compatibility: ecs.Compatibility.FARGATE,
-      cpu: '256',
-      memoryMiB: '512',
+      cpu: '512',
+      memoryMiB: '1024',
       runtimePlatform: {
         cpuArchitecture: ecs.CpuArchitecture.ARM64,
         operatingSystemFamily: ecs.OperatingSystemFamily.LINUX
