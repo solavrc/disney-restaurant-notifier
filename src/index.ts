@@ -35,11 +35,11 @@ export const sleep = (ms: number = 1000) => new Promise(resolve => setTimeout(re
        * `Array.from(document.querySelectorAll('.hasNoReservation > .header')).map(node => node.textContent.trim())`
        * ['マゼランズ', 'リストランテ・ディ・カナレット', 'Ｓ.Ｓ.コロンビア･ダイニングルーム', 'テディ・ルーズヴェルト・ラウンジ', 'レストラン櫻', 'ホライズンベイ・レストラン']
        */
-      if (restaurants.includes('マゼランズ') || restaurants.includes('Ｓ.Ｓ.コロンビア･ダイニングルーム')) {
+      if (restaurants.length > 0) {
         await axios.post('https://discord.com/api/webhooks/1163858647504404510/epAj6JQ_NcRs6-b3ELXOnc-R4__dflkYEYReW1fRd6B8pNuGNrYKdd6SVliucFqRycGa', { content: `予約可能なレストランが見つかりました。(${JSON.stringify(restaurants)})\n${url}` }, { headers: { 'Content-Type': 'application/json' } })
       }
-    } catch (error) {
-      console.error(error)
+    } catch (error: unknown) {
+      // console.error(error)
     } finally {
       await browser.close()
     }
