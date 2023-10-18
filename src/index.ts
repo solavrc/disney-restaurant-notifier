@@ -16,7 +16,7 @@ export const sleep = (ms: number = 1000) => new Promise(resolve => setTimeout(re
         height: 1080,
         isMobile: false,
       },
-      protocolTimeout: 300_000,
+      protocolTimeout: 180_000,
       executablePath,
       args: [
         '--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
@@ -25,7 +25,7 @@ export const sleep = (ms: number = 1000) => new Promise(resolve => setTimeout(re
       ]
     })
     const [page] = await browser.pages()
-    page.setDefaultTimeout(300_000)
+    page.setDefaultTimeout(180_000)
     try {
       await page.goto(url)
       await page.waitForSelector('.hasNoReservation')
@@ -43,6 +43,5 @@ export const sleep = (ms: number = 1000) => new Promise(resolve => setTimeout(re
     } finally {
       await browser.close()
     }
-    await sleep(30_000)
   }
 })()
